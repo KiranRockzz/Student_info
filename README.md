@@ -53,3 +53,42 @@ This project sets up a basic Node.js HTTP server that returns student data based
 
 2. **Handling Errors:**
     - Ensures that if a student ID does not exist, the server responds appropriately with a 404 status and a JSON error message.
+
+const http = require('http');
+const url = require('url');
+
+// Student data definition
+const studentData = {
+    11111: { id: 11111, name: 'Bruce Lee', score: 84 },
+    22222: { id: 22222, name: 'Jackie Chen', score: 93 },
+    33333: { id: 33333, name: 'Jet Li', score: 88 }
+};
+
+// HTTP server creation
+const server = http.createServer((req, res) => {
+    const parsedUrl = url.parse(req.url, true);
+    const studentId = Number(parsedUrl.query.student_id); // Convert student_id to a number
+
+    // Check if the student ID exists in the student data
+    if (studentId && studentData[studentId]) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(studentData[studentId]));
+    } else {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Student not found' }));
+    }
+});
+
+// Start the server
+const port = 8000;
+server.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}/`);
+});
+
+[Google slides link]
+
+(https://github.com/KiranRockzz/Student_info.git)
+ 
+
+
+
