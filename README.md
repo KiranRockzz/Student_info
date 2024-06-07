@@ -87,7 +87,7 @@ server.listen(port, () => {
 
 [Google slides link]
 
-(https://github.com/KiranRockzz/Student_info.git)
+(https://docs.google.com/presentation/d/1eJa15sP99NWtnRu3rfHNaqd40Zt5PfGLY-eX6jPJp2Y/edit?usp=sharing)
  
 
 
